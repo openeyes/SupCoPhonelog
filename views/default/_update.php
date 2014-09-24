@@ -17,30 +17,9 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html The GNU General Public License V3.0
  */
 ?>
-
-<?php $this->beginContent('//patient/event_container'); ?>
-	<?php
-		$this->breadcrumbs=array($this->module->id);
-		$this->event_actions[] = EventAction::button('Save', 'save', array('level' => 'save'), array('form'=>'clinical-create'));
-	?>
-
-	<?php $form = $this->beginWidget('BaseEventTypeCActiveForm', array(
-		'id'=>'clinical-create',
-		'enableAjaxValidation'=>false,
-		'layoutColumns' => array(
-			'label' => 4,
-			'field' => 8
-		)
-	));
-	?>
-
-		<?php $this->displayErrors($errors)?>
-
-		<div class="js-active-elements">
-			<?php $this->renderOpenElements($this->action->id, $form)?>
-		</div>
-
-		<?php $this->displayErrors($errors, true)?>
-
-	<?php $this->endWidget()?>
-<?php $this->endContent() ;?>
+<?php
+$this->renderPartial(
+	'_form',
+	array('element' => $element, 'data' => $data, 'form' => $form, 'child' => $child)
+);
+?>
